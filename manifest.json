@@ -1,0 +1,17 @@
+{
+	"name": "Trello copy link",
+	"version": "1.102",
+	"description": "",
+	"content_scripts": [
+		{
+			"matches": ["https://trello.com/*"],
+			"js": ["trello-copy-link.js"],
+			"css": []
+		}
+	],
+	"manifest_version" : 2,
+	"icons": { "128": "copy.png" },
+	"permissions": [
+		"storage"
+	]
+}
