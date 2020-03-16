@@ -1,0 +1,40 @@
+.list-total {
+	color: #006580;
+	font-size: 16px;
+	font-weight: bold;
+	float: right;
+	margin: 1px 0 0 0;
+	line-height:18px;
+}
+
+.board-header-btns .list-total{ /* only targets the board totals */
+	line-height:30px;
+	color: #60c5f0;
+}
+
+.list-total .cpoints{
+	margin-right:3px;
+	opacity: 0.5;
+}
+
+.picker-consumed,
+.picker {
+	float: left;
+	width: 100%;
+	padding: 5px 0;
+}
+
+.picker-title {
+	padding-right: 20px;
+}
+
+.point-value {
+	background-color: #006580 !important;
+	border-radius: 3px;
+	padding: 2px 5px !important;
+	margin-right: 5px;
+	font-size: 15px !important;
+	color: white;
+	font-weight:bold;
+	cursor: pointer;
+}

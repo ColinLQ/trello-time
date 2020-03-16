@@ -5,8 +5,8 @@
 	"content_scripts": [
 		{
 			"matches": ["https://trello.com/*"],
-			"js": ["trello-copy-link.js"],
-			"css": []
+			"js": ["jquery-2.1.4.min.js","trello-time.js"],
+			"css": ["trello-time.css"]
 		}
 	],
 	"manifest_version" : 2,
