@@ -245,9 +245,9 @@ function observerTabParent() {
 
 function addReInitBtn() {
   const btn = $('<div class="mod-left board-header-btn board-header-btn-invite board-header-btn-without-icon board-header-btn-text js-init-btn">Init Time</div>').click(init);
-  const $boardHeader = $('.js-board-header');
+  const $boardHeader = $('#header');
   if (!$boardHeader.find('.js-init-btn')[0]) {
-    $('.js-board-header').append(btn)
+    $boardHeader.children().first().append(btn)
   }
 }
 
