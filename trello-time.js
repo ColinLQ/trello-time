@@ -146,15 +146,25 @@ function observerBoard() {
   })
 }
 
+// 计算总时间
+const totalDebounce = debounce(function() {
+  let total = 0;
+  $('.js-time-points').each(function () {
+    total += Number($(this).text())
+  })
+
+  $('.js-init-btn').text('Init Time: ' + total);
+}, 300)
+
 // 添加 list 顶部 总计 dom
 function getTotalDom($list) {
   $list = $list.hasClass('js-list') ? $list : $list.parents('.js-list');
   // 防止重复添加
-  let $points = $list.find('.list-total .points');
+  let $points = $list.find('.list-total .js-time-points');
   if ($points[0]) { return $points; }
 
   const $listTotal = $('<span class="list-total"></span>');
-  $points = $('<span class="points"></span>')
+  $points = $('<span class="points js-time-points"></span>')
   $listTotal.append($points);
   $list.find('.js-list-header').append($listTotal);
   return $points;
@@ -163,10 +173,11 @@ function getTotalDom($list) {
 // 更新list时间总数
 function updataListTotal($list) {
   let total = 0;
-  $list.find('.js-badge-time').each(function() {
+  $list.find('.js-badge-time:visible').each(function() {
     total += Number(this.textContent);
   })
   getTotalDom($list).text(total);
+  totalDebounce();
 }
 
 const listChangeDoms = new Set();
@@ -189,7 +200,7 @@ const listChangeDebounce = debounce(function(){
     updataListTotal($(item));
   })
   listChangeDoms.clear();
-})
+}, 300)
 
 // 监听整个list, 新增或删除 card 时，触发 listCardChange()
 function observerList($list) {
@@ -244,9 +255,9 @@ function observerTabParent() {
 }
 
 function addReInitBtn() {
-  const btn = $('<div class="mod-left board-header-btn board-header-btn-invite board-header-btn-without-icon board-header-btn-text js-init-btn">Init Time</div>').click(init);
   const $boardHeader = $('#header');
   if (!$boardHeader.find('.js-init-btn')[0]) {
+    const btn = $('<div class="mod-left board-header-btn board-header-btn-invite board-header-btn-without-icon board-header-btn-text js-init-btn">Init Time</div>').click(init);
     $boardHeader.children().first().append(btn)
   }
 }
