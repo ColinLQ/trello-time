@@ -262,11 +262,25 @@ function addReInitBtn() {
   }
 }
 
+function addToggleTimeCardBtn() {
+  const $boardHeader = $('#header');
+  if (!$boardHeader.find('.js-toggle-time-card-btn')[0]) {
+    const btn = $('<div class="mod-left board-header-btn board-header-btn-invite board-header-btn-without-icon board-header-btn-text js-toggle-time-card-btn">Toggle Time</div>').click(function() {
+      const $this = $(this);
+      const isShowCard = $this.data('showCard')
+      $('.js-badge-time').parents('.js-member-droppable')[isShowCard ? 'hide' : 'show']()
+      $this.data('showCard', !isShowCard)
+    });
+    $boardHeader.children().first().append(btn)
+  }
+}
+
 init();
 
 $(function() {
   observerTabParent();
   init();
   addReInitBtn();
+  addToggleTimeCardBtn();
 })
 
