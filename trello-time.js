@@ -90,8 +90,8 @@ function setCardBackgroundColor($card) {
 function setBadgesBackgroundColor($card) {
   const $badges = $card.find('.badges');
   $card.find('.badges').css({
-    'background-color': 'rgba(255, 255, 255, 0.5)',
-    'border-radius': '3px',
+    'backgroundColor': 'rgba(255, 255, 255, 0.5)',
+    'borderRadius': '3px',
   })
 }
 
@@ -278,9 +278,11 @@ function addToggleTimeCardBtn() {
 init();
 
 $(function() {
-  observerTabParent();
-  init();
-  addReInitBtn();
-  addToggleTimeCardBtn();
+  setTimeout(() => {
+    observerTabParent();
+    init();
+    addReInitBtn();
+    addToggleTimeCardBtn();
+  }, 1000);
 })
 
